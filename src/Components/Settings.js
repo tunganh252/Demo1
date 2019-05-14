@@ -48,10 +48,6 @@ export default class Settings extends Component {
         return (
             <SettingContainer>
                 <div>
-                    {/* <ItemSetting mar="75px 67px 75px 0"/>
-          <ItemSetting mar="75px 67px 75px 0"/>
-          <ItemSetting mar="75px 67px 75px 0"/>
-          <ItemSetting mar="75px 67px 75px 0"/> */}
                     <ItemSetting mar="75px 37px">
                         <div>
                             camera on

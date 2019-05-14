@@ -86,43 +86,39 @@ export default class User extends Component {
             .UserData
             .map((item, index) => {
                 return (<ItemUser key={index} UserData={item}/>)
-
             });
     }
 
     onDragOver = (e) => {
         e.preventDefault();
     }
-    
+
     onDropa = (e) => {
         e.preventDefault();
         let data = e
             .dataTransfer
             .getData("text/plain");
-            this.setState({dataId: data})
-        let newData = 
-            this.props.UserData
+        this.setState({dataId: data})
+        let newData = this
+            .props
+            .UserData
             .filter(item => {
                 return (item.id !== Number(data))
             })
 
         console.log('drop --> dataId:', data);
         console.log('newData', newData);
-        
+
         this
             .props
             .UpdateUser(newData);
-
-            
 
     }
 
     // Html Dom
     scrollHorizontal = (e) => {
-        // console.log(e);
-        // console.log('eventX', e.deltaX);
-        // console.log('eventY', e.deltaY);
-        // console.log('currenttarget', e.currentTarget.scrollLeft);
+        // console.log(e); console.log('eventX', e.deltaX); console.log('eventY',
+        // e.deltaY); console.log('currenttarget', e.currentTarget.scrollLeft);
         if (e.deltaY < 0) {
             e.currentTarget.scrollLeft -= 100
         } else {
