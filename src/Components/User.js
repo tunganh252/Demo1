@@ -19,6 +19,8 @@ const MainContener = styled.div `
       border: solid 5px #fff;
       background-color: #5bc3bf;
       .countNumber{
+        display: flex;
+        justify-content: center;
         width: 125px;
         height: 127px;
         font-family: Arial;
@@ -83,43 +85,44 @@ export default class User extends Component {
             .props
             .UserData
             .map((item, index) => {
-                return (<ItemUser
-                    key={index}
-                    
-                    UserData={item}/>)
+                return (<ItemUser key={index} UserData={item}/>)
 
             });
     }
 
-
-    
-   
-
     onDragOver = (e) => {
         e.preventDefault();
     }
-
+    
     onDropa = (e) => {
-      e.preventDefault();
-      // let data = e.dataTransfer.getData("text");
-      let data = e.dataTransfer.getData("text/plain");
-      let newData = this.props.UserData.filter(item => item.id !==  data)
-      
-      console.log('data',data);
-      console.log('drop');
-      console.log('newData',newData);
-      this.props.UpdateUser(newData);
+        e.preventDefault();
+        let data = e
+            .dataTransfer
+            .getData("text/plain");
+            this.setState({dataId: data})
+        let newData = 
+            this.props.UserData
+            .filter(item => {
+                return (item.id !== Number(data))
+            })
 
+        console.log('drop --> dataId:', data);
+        console.log('newData', newData);
+        
+        this
+            .props
+            .UpdateUser(newData);
 
+            
 
     }
 
+    // Html Dom
     scrollHorizontal = (e) => {
-        console.log('123');
-        console.log(e);
-        console.log('eventX', e.deltaX);
-        console.log('eventY', e.deltaY);
-        console.log('currenttarget', e.currentTarget.scrollLeft);
+        // console.log(e);
+        // console.log('eventX', e.deltaX);
+        // console.log('eventY', e.deltaY);
+        // console.log('currenttarget', e.currentTarget.scrollLeft);
         if (e.deltaY < 0) {
             e.currentTarget.scrollLeft -= 100
         } else {
@@ -134,7 +137,7 @@ export default class User extends Component {
                 <div className='slideScroll' onWheel={(e) => this.scrollHorizontal(e)}>
                     <div className='itemCount'>
                         <div className='countNumber'>
-                            02
+                            {this.props.UserData.length}
                         </div>
                         <div className='countName'>
                             PAX

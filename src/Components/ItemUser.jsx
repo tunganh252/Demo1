@@ -20,9 +20,9 @@ export default class ItemUser extends Component {
     e.dataTransfer.effectAllowed = "move";
     e.dataTransfer.setDragImage(e.target.parentNode, 20, 20);
     // e.preventDefault();
-    // e.dataTransfer.setData("text", this.props.UserData.id);
-    e.dataTransfer.setData("text/plain", e.target.id);
-    console.log('Drag --> id: '+this.props.UserData.id);
+    e.dataTransfer.setData("text", this.props.UserData.id);
+    // e.dataTransfer.setData("text/plain", e.target.id);
+    console.log('drag --> id: '+this.props.UserData.id);
   }
   
 

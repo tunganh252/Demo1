@@ -10,17 +10,21 @@ export default class App extends Component {
         super(props);
         this.state = {
             user: user,
-            data: []
         }
+
     }
-    Update = (newData) => {
-        this.setState({data: newData})
-    }
+            UpdateUser = (newData) => {
+                this.setState({user: newData})
+            }
+
     render() {
         return (
             <React.Fragment>
                 <Header/>
-                <User UserData={this.state.user} UpdateUser={this.Update}/>
+                <User
+                    UserData={this.state.user}
+                    UpdateUser={this.UpdateUser}
+                    />
                 <Settings/>
             </React.Fragment>
         )
